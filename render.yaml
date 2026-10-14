@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: atlas-travel-advisor
+    runtime: docker
+    plan: starter
+    healthCheckPath: /healthz
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false          # you paste it in the Render dashboard
+      - key: CHAT_MODEL
+        value: gpt-6-luna
+      - key: PLANNER_MODEL
+        value: gpt-6.1-sol
+      - key: IMAGE_MODEL
+        value: gpt-image-2.5-flare
+      - key: DAILY_BUDGET_USD
+        value: "10"

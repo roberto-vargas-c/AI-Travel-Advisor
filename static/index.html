@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atlas travel advisor</title>
+<meta name="description" content="Chat with Atlas to plan a trip and get a day-by-day visual itinerary.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%230B6E63'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23E9A800'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="app">
+  <section class="chat" aria-label="Conversation">
+    <header class="chat-head">
+      <div class="brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13"/><circle cx="16" cy="16" r="5" class="dot"/></svg>
+        <span>Atlas</span>
+      </div>
+      <button class="ghost" id="newTrip" type="button">New trip</button>
+    </header>
+
+    <div class="log" id="log" aria-live="polite"></div>
+
+    <div class="starters" id="starters">
+      <button type="button">4 days in Lisbon in May for food, viewpoints and a little nightlife</button>
+      <button type="button">A relaxed week in Kyoto with temples and easy hikes</button>
+      <button type="button">Weekend in Vienna with my parents, museums and coffee houses</button>
+    </div>
+
+    <form class="composer" id="composer">
+      <label for="msg" class="sr">Message Atlas</label>
+      <textarea id="msg" rows="1" maxlength="1500" placeholder="Where to, and for how long?" autocomplete="off"></textarea>
+      <button type="submit" id="send">Send</button>
+    </form>
+    <p class="meter" id="meter" title="">No AI usage yet in this chat.</p>
+  </section>
+
+  <section class="board" id="board" aria-label="Your itinerary">
+    <div class="empty" id="empty">
+      <svg viewBox="0 0 220 120" aria-hidden="true" class="empty-route">
+        <path d="M14 96 C 60 96, 60 30, 110 30 S 160 96, 206 60" />
+        <circle cx="14" cy="96" r="7"/><circle cx="110" cy="30" r="7"/><circle cx="206" cy="60" r="7"/>
+      </svg>
+      <h1>Your trip appears here</h1>
+      <p>Tell Atlas where you're going, for how long and what you enjoy. You'll get a day-by-day plan with weather, a budget and an illustration of your trip.</p>
+    </div>
+    <div class="plan" id="plan" hidden>
+      <div class="plan-actions">
+        <button type="button" id="savePng">Save as image</button>
+        <a id="saveMd" class="btn-link" href="#" download>Download as text</a>
+      </div>
+      <article class="poster" id="poster"></article>
+    </div>
+  </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
