@@ -2,7 +2,7 @@ services:
   - type: web
     name: atlas-travel-advisor
     runtime: docker
-    plan: starter
+    plan: free           # sleeps after ~15 min idle; change to starter ($7/mo) to keep it on
     healthCheckPath: /healthz
     envVars:
       - key: OPENAI_API_KEY
@@ -14,4 +14,4 @@ services:
       - key: IMAGE_MODEL
         value: gpt-image-2.5-flare
       - key: DAILY_BUDGET_USD
-        value: "10"
+        value: "2"          # test budget; raise when you go public
